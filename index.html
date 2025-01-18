@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lash88</title>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIZA_SYCCF_TA_GB5SeRhDhgSPDZmLwFKF3o3OoBr0&libraries=places"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,16 +34,6 @@
             margin: 20px;
             border-radius: 10px;
         }
-        .reviews {
-            margin-top: 30px;
-        }
-        .review {
-            margin-bottom: 20px;
-            padding: 15px;
-            border: 1px solid #ddd;
-            border-radius: 10px;
-            background: rgba(255, 255, 255, 0.9);
-        }
         footer {
             text-align: center;
             padding: 10px;
@@ -61,11 +50,6 @@
         footer a:hover {
             text-decoration: underline;
         }
-        iframe {
-            width: 100%;
-            height: 500px;
-            border: 0;
-        }
     </style>
 </head>
 <body>
@@ -77,16 +61,15 @@
         <h2>Welcome to Lash88</h2>
         <p>Browse our services, view testimonials, or book your next appointment!</p>
 
-        <!-- Google Reviews Section -->
-        <div class="reviews" id="google-reviews">
-            <h3>Google Reviews</h3>
-            <div id="google-reviews-container">Loading Google reviews...</div>
-        </div>
-
-        <!-- Fresha Reviews Section (Embed) -->
-        <div class="reviews" id="fresha-reviews">
-            <h3>Fresha Reviews</h3>
-            <iframe src="https://www.fresha.com/a/lash88-townsville-2-eura-court-ht5ism6t#modal-reviews"></iframe>
+        <!-- Links to Google Reviews and Fresha Reviews -->
+        <div class="reviews">
+            <h3>Read Our Reviews:</h3>
+            <p>
+                <a href="https://www.google.com/search?q=Lash88+Townsville+reviews" target="_blank">Google Reviews</a>
+            </p>
+            <p>
+                <a href="https://www.fresha.com/a/lash88-townsville-2-eura-court-ht5ism6t#modal-reviews" target="_blank">Fresha Reviews</a>
+            </p>
         </div>
 
         <p>
@@ -97,40 +80,5 @@
     <footer>
         &copy; 2025 Lash88. All Rights Reserved.
     </footer>
-
-    <script>
-        const apiKey = "AIZA_SYCCF_TA_GB5SeRhDhgSPDZmLwFKF3o3OoBr0"; // Replace with your actual API key
-        const placeId = "ChIJ55Zz2u751WsR25kPjG9Axfw"; // Replace with your actual Place ID
-
-        // Function to fetch Google Reviews
-        function fetchGoogleReviews() {
-            const service = new google.maps.places.PlacesService(document.createElement('div'));
-            service.getDetails({ placeId: placeId, fields: ['reviews'] }, (place, status) => {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    displayGoogleReviews(place.reviews);
-                } else {
-                    document.getElementById('google-reviews-container').innerText = "Unable to load Google reviews.";
-                }
-            });
-        }
-
-        // Function to display Google Reviews
-        function displayGoogleReviews(reviews) {
-            const container = document.getElementById('google-reviews-container');
-            container.innerHTML = ""; // Clear the container before adding new reviews
-            reviews.forEach(review => {
-                const reviewDiv = document.createElement('div');
-                reviewDiv.className = "review";
-                reviewDiv.innerHTML = `
-                    <p><strong>${review.author_name}</strong> - ${review.rating}★</p>
-                    <p>${review.text}</p>
-                `;
-                container.appendChild(reviewDiv);
-            });
-        }
-
-        // Fetch Google reviews when the page loads
-        fetchGoogleReviews();
-    </script>
 </body>
 </html>
