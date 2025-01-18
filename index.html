@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lash88</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AizaSyCCfTaGB5SeRhDhgSPDZmLwFKF3o3OoBr0&libraries=places"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -36,6 +37,13 @@
         }
         .reviews {
             margin-top: 30px;
+        }
+        .review {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.9);
         }
         footer {
             text-align: center;
@@ -70,11 +78,9 @@
         <p>Browse our services, view testimonials, or book your next appointment!</p>
 
         <!-- Google Reviews Section -->
-        <div class="reviews">
+        <div class="reviews" id="google-reviews">
             <h3>Google Reviews</h3>
-            <p>
-                <a href="https://www.google.com/search?q=Lash88+Townsville+reviews" target="_blank">View Google Reviews</a>
-            </p>
+            <div id="google-reviews-container">Loading Google reviews...</div>
         </div>
 
         <!-- Fresha Reviews Section (Embed) -->
@@ -91,5 +97,38 @@
     <footer>
         &copy; 2025 Lash88. All Rights Reserved.
     </footer>
+
+    <script>
+        const apiKey = "AIzaSyCCfTaGB5SeRhDhgSPDZmLwFKF3o3OoBr0";
+        const placeId = "ChIJ55Zz2u751WsR25kPjG9Axfw";
+
+        function fetchGoogleReviews() {
+            const service = new google.maps.places.PlacesService(document.createElement('div'));
+            service.getDetails({ placeId: placeId, fields: ['reviews'] }, (place, status) => {
+                if (status === google.maps.places.PlacesServiceStatus.OK) {
+                    displayGoogleReviews(place.reviews);
+                } else {
+                    document.getElementById('google-reviews-container').innerText = "Unable to load Google reviews.";
+                }
+            });
+        }
+
+        function displayGoogleReviews(reviews) {
+            const container = document.getElementById('google-reviews-container');
+            container.innerHTML = "";
+            reviews.forEach(review => {
+                const reviewDiv = document.createElement('div');
+                reviewDiv.className = "review";
+                reviewDiv.innerHTML = `
+                    <p><strong>${review.author_name}</strong> - ${review.rating}★</p>
+                    <p>${review.text}</p>
+                `;
+                container.appendChild(reviewDiv);
+            });
+        }
+
+        // Fetch Google reviews when the page loads
+        fetchGoogleReviews();
+    </script>
 </body>
 </html>
