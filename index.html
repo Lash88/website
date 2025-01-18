@@ -10,7 +10,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('Photo1.jpg') no-repeat center center fixed;
+            background: url('photo1.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #333;
         }
@@ -70,7 +70,7 @@
 </head>
 <body>
     <header>
-        <img src="Logo.png" alt="Lash88 Logo">
+        <img src="logo.png" alt="Lash88 Logo">
         <h1>Quality is choice, rewarded with confidence, delivered with elegance</h1>
     </header>
     <main>
@@ -95,40 +95,3 @@
         </p>
     </main>
     <footer>
-        &copy; 2025 Lash88. All Rights Reserved.
-    </footer>
-
-    <script>
-        const apiKey = "AIzaSyCCfTaGB5SeRhDhgSPDZmLwFKF3o3OoBr0";
-        const placeId = "ChIJ55Zz2u751WsR25kPjG9Axfw";
-
-        function fetchGoogleReviews() {
-            const service = new google.maps.places.PlacesService(document.createElement('div'));
-            service.getDetails({ placeId: placeId, fields: ['reviews'] }, (place, status) => {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-                    displayGoogleReviews(place.reviews);
-                } else {
-                    document.getElementById('google-reviews-container').innerText = "Unable to load Google reviews.";
-                }
-            });
-        }
-
-        function displayGoogleReviews(reviews) {
-            const container = document.getElementById('google-reviews-container');
-            container.innerHTML = "";
-            reviews.forEach(review => {
-                const reviewDiv = document.createElement('div');
-                reviewDiv.className = "review";
-                reviewDiv.innerHTML = `
-                    <p><strong>${review.author_name}</strong> - ${review.rating}★</p>
-                    <p>${review.text}</p>
-                `;
-                container.appendChild(reviewDiv);
-            });
-        }
-
-        // Fetch Google reviews when the page loads
-        fetchGoogleReviews();
-    </script>
-</body>
-</html>
