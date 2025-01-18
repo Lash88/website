@@ -9,7 +9,7 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: url('Photo1.jpg') no-repeat center center fixed;
+            background: url('photo1.jpg') no-repeat center center fixed;
             background-size: cover;
             color: #333;
         }
@@ -34,6 +34,9 @@
             margin: 20px;
             border-radius: 10px;
         }
+        .reviews {
+            margin-top: 30px;
+        }
         footer {
             text-align: center;
             padding: 10px;
@@ -50,26 +53,34 @@
         footer a:hover {
             text-decoration: underline;
         }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: 0;
+        }
     </style>
 </head>
 <body>
     <header>
-        <img src="Logo.png" alt="Lash88 Logo">
+        <img src="logo.png" alt="Lash88 Logo">
         <h1>Quality is choice, rewarded with confidence, delivered with elegance</h1>
     </header>
     <main>
         <h2>Welcome to Lash88</h2>
         <p>Browse our services, view testimonials, or book your next appointment!</p>
 
-        <!-- Links to Google Reviews and Fresha Reviews -->
+        <!-- Google Reviews Section -->
         <div class="reviews">
-            <h3>Read Our Reviews:</h3>
+            <h3>Google Reviews</h3>
             <p>
-                <a href="https://www.google.com/search?q=Lash88+Townsville+reviews" target="_blank">Google Reviews</a>
+                <a href="https://www.google.com/search?q=Lash88+Townsville+reviews" target="_blank">View Google Reviews</a>
             </p>
-            <p>
-                <a href="https://www.fresha.com/a/lash88-townsville-2-eura-court-ht5ism6t#modal-reviews" target="_blank">Fresha Reviews</a>
-            </p>
+        </div>
+
+        <!-- Fresha Reviews Section (Embed) -->
+        <div class="reviews">
+            <h3>Fresha Reviews</h3>
+            <iframe src="https://www.fresha.com/a/lash88-townsville-2-eura-court-ht5ism6t#modal-reviews"></iframe>
         </div>
 
         <p>
